@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -101,7 +100,7 @@ public class UtilisateurImpl implements UtilisateurService, UserDetailsService {
                 .mdp(passwordEncoder.encode(utilisateur.password()))
                 .role(
                         Role.builder()
-                                .libelle(TypeDeRole.USER)
+                                .libelle(TypeDeRole.AGENTDSR)
                                 .build())
                 .build();
 

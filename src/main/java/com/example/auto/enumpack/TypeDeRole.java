@@ -38,7 +38,7 @@ public enum TypeDeRole {
                                         TypePermission.UTILISATEUR_CREATE,
                                         TypePermission.UTILISATEUR_READ,
                                         TypePermission.UTILISATEUR_UPDATE)),
-        USER(
+        AGENTDSR(
                         Set.of(
                                         TypePermission.UTILISATEUR_CREATE,
                                         TypePermission.UTILISATEUR_READ,
