@@ -57,8 +57,8 @@ public class JwtService {
     public void disableToken(Utilisateur utilisateur) {
         final List<Jwt> jwtList = this.jwtDAO.findByUtilisateurUsername(utilisateur.getUsername()).peek(
                 jwt -> {
-                    jwt.setDesactive(true);
-                    jwt.setExpire(true);
+//                    jwt.setDesactive(true);
+//                    jwt.setExpire(true);
                 }).toList();
         this.jwtDAO.saveAll(jwtList);
     }

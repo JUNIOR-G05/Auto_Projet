@@ -49,6 +49,7 @@ public class ConfigurationSecurityApplication {
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/user").permitAll()
                                 .requestMatchers(SWAGGER_LIST).permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(
