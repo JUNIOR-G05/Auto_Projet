@@ -1,6 +1,6 @@
 package com.example.auto.repository;
 
-import com.example.Auto.Models.Assurance;
+import com.example.auto.entity.Assurance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
