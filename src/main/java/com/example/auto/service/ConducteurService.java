@@ -3,6 +3,8 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.ConducteurInter;
 import com.example.auto.entity.Conducteur;
+import com.example.auto.repository.ConducteurDAO;
+import org.aspectj.weaver.loadtime.definition.Definition;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +12,9 @@ import java.util.List;
 @Service
 public class ConducteurService implements ConducteurInter {
 
-    private final ConducteurInter conducteurInter;
+    private final ConducteurDAO conducteurInter;
 
-    public ConducteurService(ConducteurInter conducteurInter) {
+    public ConducteurService(ConducteurDAO conducteurInter) {
         this.conducteurInter = conducteurInter;
     }
 
@@ -34,6 +36,6 @@ public class ConducteurService implements ConducteurInter {
     }
 
     public Conducteur getByIdCond(Long id) {
-        return conducteurInter.getByIdCond(id);
+        return conducteurInter.getReferenceById(id);
     }
 }

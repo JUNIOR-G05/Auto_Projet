@@ -3,7 +3,6 @@ package com.example.auto.service;
 import com.example.auto.dto.user.ResponseUtilisateur;
 import com.example.auto.dto.user.SaveUtilisateurDTO;
 import com.example.auto.dto.user.UpdateUtilisateurDTO;
-import com.example.auto.entity.user.Utilisateur;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -12,7 +11,7 @@ import java.util.UUID;
 
 public interface UtilisateurService extends UserDetailsService {
 
-    void createSuprerAdmin(String email, String username, String password);
+
 
     List<ResponseUtilisateur> findAll();
 
