@@ -13,7 +13,7 @@ import java.util.List;
 public class HopitalService implements HopitalInter {
 
 
-    private HopitalDAO hRepo;
+    private final HopitalDAO hRepo;
 
     public HopitalService(HopitalDAO hRepo) {
         this.hRepo = hRepo;

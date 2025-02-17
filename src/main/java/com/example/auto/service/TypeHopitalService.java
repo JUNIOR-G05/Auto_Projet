@@ -9,7 +9,7 @@ import java.util.List;
  @Service
 public class   TypeHopitalService implements TypeHopitalInter {
 
-    private TypeHopitalDAO tRepo;
+    private final TypeHopitalDAO tRepo;
 
     public TypeHopitalService(TypeHopitalDAO tRepo) {
         this.tRepo = tRepo;
@@ -17,23 +17,19 @@ public class   TypeHopitalService implements TypeHopitalInter {
 
     @Override
     public List<TypeHopital> findAll() {
-        return null;
+        return tRepo.findAll();
     }
 
     public TypeHopital save(TypeHopital typeHopital) {
         return tRepo.save(typeHopital);
     }
 
-    public List<TypeHopital> getTypeHopitals() {
-        return tRepo.findAll();
-    }
-
     public TypeHopital update(Long id, TypeHopital typeHopital ) {
-        return null;
+        return tRepo.save(typeHopital);
     }
 
     public Boolean delete(Long id) {
-        return null;
+        tRepo.deleteById(id);return true;
     }
 
     public TypeHopital getByIdTypeHop(Long id) {

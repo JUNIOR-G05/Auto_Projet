@@ -20,7 +20,7 @@ public class ConducteurService implements ConducteurInter {
 
     @Override
     public List<Conducteur> findAll() {
-        return null;
+        return conducteurInter.findAll();
     }
 
     public Conducteur save(Conducteur conducteur) {
@@ -28,11 +28,18 @@ public class ConducteurService implements ConducteurInter {
     }
 
     public Conducteur update(Long id, Conducteur conducteur) {
+        Conducteur conducteur1 = conducteurInter.findById(id).orElse(null);
+        if (conducteur1 != null) {
+            conducteur1.setNumeroPiece(conducteur.getNumeroPiece());
+            conducteur1.setPermis(conducteur.getPermis());
+            return conducteurInter.save(conducteur1);
+        }
         return null;
     }
 
     public Boolean delete(Long id) {
-        return null;
+        conducteurInter.deleteById(id);
+        return true;
     }
 
     public Conducteur getByIdCond(Long id) {

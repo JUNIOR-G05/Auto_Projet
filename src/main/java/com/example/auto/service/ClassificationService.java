@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClassificationService implements ClassificationInter {
 
-    private ClassificationDAO cRepo;
+    private final ClassificationDAO cRepo;
 
     public ClassificationService(ClassificationDAO cRepo) {
         this.cRepo = cRepo;
@@ -20,21 +20,26 @@ public class ClassificationService implements ClassificationInter {
 
     @Override
     public List<Classification> findAll() {
-        return null;
+        return cRepo.findAll();
     }
 
     public Classification save(Classification classification) {
         return cRepo.save(classification);
     }
-    public List<Classification> getClassifications() {
-        return cRepo.findAll();
-    }
+
     public Classification update(Long id, Classification classification ) {
+
+        Classification classification1 = cRepo.findById(id).orElse(null);
+        if (classification1 != null) {
+            classification1.setNom(classification.getNom());
+            return cRepo.save(classification1);
+        }
         return null;
     }
 
     public Boolean delete(Long id) {
-        return null;
+        cRepo.deleteById(id);
+        return true;
     }
 
     public Classification getByIdClass(Long id) {

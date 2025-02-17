@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class AccidentService implements AccidentInter {
 
-    private AccidentDAO aRepo;
+    private final AccidentDAO aRepo;
 
     public AccidentService(AccidentDAO aRepo) {
         this.aRepo = aRepo;
@@ -19,26 +19,38 @@ public class AccidentService implements AccidentInter {
 
     @Override
     public List<Accident> findAll() {
-        return null;
+        return aRepo.findAll();
     }
 
     public Accident save(Accident accident) {
         return aRepo.save(accident);
     }
-    public List<Accident> getAccidents() {
-        return aRepo.findAll();
 
-    }
     public Accident update(Long id, Accident accident ) {
+
+        Accident accident1 = aRepo.findById(id).orElse(null);
+        if (accident1 != null) {
+            accident1.setDescription(accident.getDescription());
+            accident1.setDateAccident(accident.getDateAccident());
+            accident1.setConducteur(accident.getConducteur());
+            accident1.setPassagers(accident.getPassagers());
+            accident1.setNombreBlesses(accident.getNombreBlesses());
+            accident1.setNombreMorts(accident.getNombreMorts());
+            accident1.setNombreVehicules(accident.getNombreVehicules());
+            accident1.setAutreDegats(accident.getAutreDegats());
+            return aRepo.save(accident1);
+        }
         return null;
+
     }
 
 
     public Boolean delete(Long id) {
-        return null;
+         aRepo.deleteById(id) ;
+            return true;
     }
 
     public Accident getByIdAcc(Long id) {
-        return this.aRepo.findById(id).orElse(null);
+        return this.aRepo.getReferenceById(id);
     }
 }

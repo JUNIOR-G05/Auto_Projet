@@ -2,15 +2,17 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.TypeVerbalInter;
 import com.example.auto.entity.TypeVerbal;
+import com.example.auto.repository.TypeVerbalDAO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TypeVerbalService  implements TypeVerbalInter {
 
-    private final TypeVerbalInter tvRepo;
+    private final TypeVerbalDAO tvRepo;
 
 
-    public TypeVerbalService(TypeVerbalInter tvRepo) {
+    public TypeVerbalService(TypeVerbalDAO tvRepo) {
         this.tvRepo = tvRepo;
     }
 
@@ -23,15 +25,15 @@ public class TypeVerbalService  implements TypeVerbalInter {
     }
 
     public TypeVerbal update(Long id, TypeVerbal typeVerbal) {
-        return tvRepo.update(id, typeVerbal);
+        return tvRepo.save(typeVerbal);
     }
 
     public Boolean delete(Long id) {
-        return tvRepo.delete(id);
+        tvRepo.deleteById(id);return true;
     }
 
     public TypeVerbal getByIdTypeVer(Long id) {
-        return tvRepo.getByIdTypeVer(id);
+        return tvRepo.getReferenceById(id);
     }
 
 }

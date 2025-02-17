@@ -3,6 +3,7 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.FicheInformationInter;
 import com.example.auto.entity.FicheInformation;
+import com.example.auto.repository.FicheInfotmationDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
 @Service
 public class FicheInformationService  implements FicheInformationInter {
 
-    private FicheInformationInter ficheInformationInter;
+    private final FicheInfotmationDAO ficheInformationInter;
 
-    public FicheInformationService(FicheInformationInter ficheInformationInter) {
+    public FicheInformationService(FicheInfotmationDAO ficheInformationInter) {
         this.ficheInformationInter = ficheInformationInter;
     }
 
@@ -32,11 +33,12 @@ public class FicheInformationService  implements FicheInformationInter {
     }
 
     public Boolean delete(Long id) {
-        return null;
+        ficheInformationInter.deleteById(id);
+        return true;
     }
 
     public FicheInformation getByIdFiche(Long id) {
-        return this.ficheInformationInter.getByIdFiche(id);
+        return this.ficheInformationInter.getReferenceById(id);
     }
 
 

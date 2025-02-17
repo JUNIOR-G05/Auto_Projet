@@ -3,6 +3,7 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.SignalisationInter;
 import com.example.auto.entity.Signalisation;
+import com.example.auto.repository.SignalisationDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,9 @@ import java.util.List;
 public class SignalisationService implements SignalisationInter {
 
 
-    private final SignalisationInter sRepo;
+    private final SignalisationDAO sRepo;
 
-    public SignalisationService(SignalisationInter sRepo) {
+    public SignalisationService(SignalisationDAO sRepo) {
         this.sRepo = sRepo;
     }
 
@@ -31,11 +32,11 @@ public class SignalisationService implements SignalisationInter {
     }
 
     public Boolean delete(Long id) {
-        sRepo.delete(id);
+        sRepo.deleteById(id);
         return true;
     }
 
     public Signalisation getByIdSig(Long id) {
-        return this.sRepo.getByIdSig(id);
+        return this.sRepo.getReferenceById(id);
     }
 }

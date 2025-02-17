@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AssuranceService  implements AssuranceInter {
+public class AssuranceService implements AssuranceInter {
 
 
-    private AssuranceDAO aRepo;
+    private final AssuranceDAO aRepo;
 
     public AssuranceService(AssuranceDAO aRepo) {
         this.aRepo = aRepo;
@@ -19,7 +19,7 @@ public class AssuranceService  implements AssuranceInter {
 
 
     public List<Assurance> findAll() {
-        return null;
+        return aRepo.findAll();
     }
 
     public Assurance save(Assurance assurance) {
@@ -28,13 +28,21 @@ public class AssuranceService  implements AssuranceInter {
 
 
     public Assurance update(Long id, Assurance assurance) {
+        Assurance assurance1 = aRepo.findById(id).orElse(null);
+        if (assurance1 != null) {
+            assurance1.setNom(assurance.getNom());
+            return aRepo.save(assurance1);
+
+        }
         return null;
     }
 
 
     public Boolean delete(Long id) {
-        return null;
+        aRepo.deleteById(id);
+        return true;
     }
+
 
     public Assurance getByIdAss(Long id) {
         return this.aRepo.findById(id).orElse(null);

@@ -11,7 +11,7 @@ import java.util.List;
 public class VehiculeService implements VehiculeInter{
 
 
-   private VehiculeDAO vRepo;
+   private final VehiculeDAO vRepo;
 
     public VehiculeService(VehiculeDAO vRepo) {
          this.vRepo = vRepo;

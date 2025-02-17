@@ -1,6 +1,7 @@
 package com.example.auto.service;
 
 
+import com.example.auto.Interface.TypePersonneInter;
 import com.example.auto.entity.TypePersonne;
 import com.example.auto.repository.TypePersonneDAO;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TypePersonneService {
+public class TypePersonneService implements TypePersonneInter {
 
-    private TypePersonneDAO tRepo;
+    private final TypePersonneDAO tRepo;
 
     public TypePersonneService(TypePersonneDAO tRepo) {
         this.tRepo = tRepo;

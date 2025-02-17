@@ -3,6 +3,7 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.PersonneImpliqueInter;
 import com.example.auto.entity.PersonneImplique;
+import com.example.auto.repository.PersonneImpliqueDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
 @Service
 public class PersonneImpliqueService implements PersonneImpliqueInter {
 
-   private final PersonneImpliqueInter pRepo;
+   private final PersonneImpliqueDAO pRepo;
 
-    public PersonneImpliqueService(PersonneImpliqueInter pRepo) {
+    public PersonneImpliqueService(PersonneImpliqueDAO pRepo) {
         this.pRepo = pRepo;
     }
 
@@ -30,11 +31,11 @@ public class PersonneImpliqueService implements PersonneImpliqueInter {
     }
 
     public Boolean delete(Long id) {
-        pRepo.delete(id);
+        pRepo.deleteById(id);
         return true;
     }
 
     public PersonneImplique getByIdPer(Long id) {
-        return this.pRepo.getByIdPer(id);
+        return this.pRepo.getReferenceById(id);
     }
 }

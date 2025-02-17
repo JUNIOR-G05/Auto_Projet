@@ -2,21 +2,25 @@ package com.example.auto.service;
 
 import com.example.auto.Interface.TypeRouteInter;
 import com.example.auto.entity.TypeRoute;
+import com.example.auto.repository.TypeRouteDAO;
+import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TypeRouteService  implements TypeRouteInter {
 
 
-    private final TypeRouteInter trRepo;
+    private final TypeRouteDAO trRepo;
 
-    public TypeRouteService(TypeRouteInter trRepo) {
+    public TypeRouteService(TypeRouteDAO trRepo) {
         this.trRepo = trRepo;
     }
 
     @Override
     public List<TypeRoute> findAll() {
-        return null;
+        return trRepo.findAll();
     }
 
     public TypeRoute save(TypeRoute typeRoute) {
@@ -24,14 +28,14 @@ public class TypeRouteService  implements TypeRouteInter {
     }
 
     public TypeRoute update(Long id, TypeRoute typeRoute) {
-        return null;
+        return trRepo.save(typeRoute);
     }
 
     public Boolean delete(Long id) {
-        return null;
+        trRepo.deleteById(id);return true;
     }
 
     public TypeRoute getByIdTypeRou(Long id) {
-        return null;
+        return trRepo.getReferenceById(id);
     }
 }
